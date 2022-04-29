@@ -5,7 +5,7 @@ library("reshape2")
 
 setwd("C:/Users/rykaczewski.2/OneDrive - The Ohio State University/Caleb Rykaczewski/Projects/EOAS 2021/data sheet versions")
 
-df2 <- read.csv("042422.EOAS21.CR30.csv")
+df2 <- read.csv("042822.EOAS21.CR31.csv")
 
 df1 <- read.csv("041222.datasummary_GPS_AX3.AC01.csv")
 
@@ -17,7 +17,8 @@ head(df1)
 dfx <- merge(x = df1, y = df2[ , c("u_id", "c_type", 
                                    "bs_days", "age", "age_cat", 
                                    "n_female", "n_open0", "n_bull", 
-                                   "gpcln_bin", "axcln_bin", "lame")], 
+                                   "gpcln_bin", "axcln_bin", "lame",
+                                  "lame1_cloc", "lame1_nobs", "lame1_grph" )], 
              
              by = "u_id", all.x = TRUE)
 
@@ -36,4 +37,4 @@ df4m$date <- gsub("/","-", df4m$date) ### this line does not work, date matching
 
 dfx3 <- merge(x = dfx2, y = df4m, by = c("u_id", "date"), all.x = TRUE)
 
-write.csv(dfx3, "042422.datasummary_GPS_AX3.CR02.csv")
+write.csv(dfx3, "042822.datasummary_GPS_AX3.CR03.csv")
